@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Register"
+    android:background="@drawable/register_bg">
+
+    <Button
+        android:id="@+id/register_back"
+        android:layout_gravity="center"
+        android:textSize="30dp"
+        android:width="270dp"
+        android:background="@drawable/back"
+        android:layout_marginTop="10dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:onClick="back"
+        />
+
+    <LinearLayout
+        android:id="@+id/register_layout"
+        android:layout_width="350dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="180dp"
+        android:layout_marginLeft="33dp"
+        android:gravity="center"
+
+        android:orientation="vertical"
+
+        >
+        <!--   账号框-->
+
+
+        <EditText
+            android:id="@+id/register_zh"
+            android:hint="账号"
+            android:background="@color/colorAccent"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:layout_width="240dp"
+            android:maxLength="13"
+            android:singleLine="true"
+            android:layout_height="wrap_content"
+            android:textSize="30dp"
+            />
+
+
+        <EditText
+            android:id="@+id/register_mm1"
+            android:inputType="textPassword"
+            android:hint="密码"
+            android:singleLine="true"
+            android:background="@color/colorAccent"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center"
+            android:textAlignment="center"
+            android:layout_width="240dp"
+            android:maxLength="13"
+            android:layout_height="wrap_content"
+            android:textSize="30dp"
+            />
+
+        <EditText
+            android:id="@+id/register_mm2"
+            android:inputType="textPassword"
+            android:hint="再次输入密码"
+            android:singleLine="true"
+            android:background="@color/colorAccent"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center"
+            android:textAlignment="center"
+            android:layout_width="240dp"
+            android:maxLength="13"
+            android:layout_height="wrap_content"
+            android:textSize="30dp"
+            />
+
+
+        <Button
+            android:id="@+id/register_login"
+            android:layout_gravity="center"
+            android:textSize="30dp"
+            android:width="270dp"
+            android:onClick="reg"
+            android:background="@drawable/login_button"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="注册"/>
+
+
+    </LinearLayout>
+
+</RelativeLayout>
