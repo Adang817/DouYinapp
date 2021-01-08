@@ -25,7 +25,7 @@
     <show-object-properties value="true" />
     <loaded-nodes>
       <connection connection-id="4ec1f6f6-416b-4c10-9e2f-5c4ae53976b4">
-        <schema name="main" object-types="view, dataset trigger, index, constraint, table, column" />
+        <schema name="main" object-types="view, table" />
       </connection>
     </loaded-nodes>
   </component>
@@ -35,9 +35,7 @@
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files>
-      <object connection-id="4ec1f6f6-416b-4c10-9e2f-5c4ae53976b4" object-ref="schemas/main/tables/user" />
-    </open-files>
+    <open-files />
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="4ec1f6f6-416b-4c10-9e2f-5c4ae53976b4" />
@@ -48,6 +46,7 @@
         <condition column="zhanghao" operator="=" value="123" active="true" />
       </filter>
     </filter-actions>
+    <filter-actions connection-id="4ec1f6f6-416b-4c10-9e2f-5c4ae53976b4" dataset="main.android_metadata" active-filter-id="" />
   </component>
   <component name="DBNavigator.Project.EditorStateManager">
     <last-used-providers />

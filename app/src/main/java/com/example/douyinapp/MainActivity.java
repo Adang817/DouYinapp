@@ -2,16 +2,22 @@ package com.example.douyinapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.InputType;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     ImageView tx;
@@ -19,7 +25,9 @@ public class MainActivity extends AppCompatActivity {
     EditText zh;
     EditText mm;
     static  int flag_eyes=1;
+    CheckBox checkBox;
     CreateDB createDB =null;
+    SharedPreferences pf =null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         tx=findViewById(R.id.tx);
         zh=findViewById(R.id.zh);
         mm=findViewById(R.id.mm);
+        checkBox=findViewById(R.id.checkBox);
         eyes=findViewById(R.id.eyes);
         createDB = new CreateDB(this, "test.db", null, 1);
 
@@ -37,6 +46,20 @@ public class MainActivity extends AppCompatActivity {
         String str_mm = intent.getStringExtra("mm");
         zh.setText(str_zh);
         mm.setText(str_mm);
+
+//        记住密码
+        pf=getSharedPreferences("rememberpassword", Context.MODE_PRIVATE);
+        boolean isRemember=pf.getBoolean("rememberpassword",false);
+        if(isRemember){
+            String name=pf.getString("zhanghao","");
+            String password=pf.getString("mima","");
+            zh.setText(name);
+            mm.setText(password);
+            checkBox.setChecked(true);
+        }
+
+
+
         //账号文本框焦点改变事件
         this.zh.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
@@ -51,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
+
                 if (hasFocus) {
                     Resources resources = getBaseContext().getResources();
                     Drawable imageDrawable = resources.getDrawable(R.drawable.touxiang_noeyes); //图片在drawable文件夹下
@@ -90,6 +114,38 @@ public class MainActivity extends AppCompatActivity {
 
     //登录
     public void login(View view) {
-        createDB.getWritableDatabase();
+        SQLiteDatabase db = createDB.getWritableDatabase();
+        Cursor cursor=db.query("user",null,"zhanghao='"+zh.getText().toString()+"'",null,null,null,null);
+        if(cursor.getCount()==0){
+            Toast.makeText(this,"账号不存在",Toast.LENGTH_SHORT).show();
+        }else{
+            String mima ="";
+            if(cursor.moveToFirst()){
+              mima=  cursor.getString(cursor.getColumnIndex("mima"));
+            }
+
+            SharedPreferences.Editor editor=null;
+            if(mima.equals(mm.getText().toString())){
+                if(checkBox.isChecked()){
+                     editor=pf.edit();
+                    if(checkBox.isChecked()){
+                        editor.putBoolean("rememberpassword",true);
+                        editor.putString("zhanghao",zh.getText().toString());
+                        editor.putString("mima",mm.getText().toString());
+
+                    }
+                }else{
+                    editor.clear();
+                }
+                editor.apply();
+
+                Intent intent=new Intent(MainActivity.this,Video.class);
+                intent.putExtra("zhanghao",zh.getText().toString());
+                startActivity(intent);
+            }else{
+                Toast.makeText(this,"密码错误",Toast.LENGTH_SHORT).show();
+            }
+
+        }
     }
 }
