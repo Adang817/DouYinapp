@@ -40,12 +40,10 @@ public class MainActivity extends AppCompatActivity {
         eyes=findViewById(R.id.eyes);
         createDB = new CreateDB(this, "test.db", null, 1);
 
-        //注册放回该界面自动填充账号密码
-        Intent intent=getIntent();
-        String str_zh = intent.getStringExtra("zh");
-        String str_mm = intent.getStringExtra("mm");
-        zh.setText(str_zh);
-        mm.setText(str_mm);
+
+
+
+
 
 //        记住密码
         pf=getSharedPreferences("rememberpassword", Context.MODE_PRIVATE);
@@ -56,9 +54,17 @@ public class MainActivity extends AppCompatActivity {
             zh.setText(name);
             mm.setText(password);
             checkBox.setChecked(true);
+
         }
 
-
+        //注册放回该界面自动填充账号密码
+        Intent intent=getIntent();
+        String str_zh = intent.getStringExtra("zh");
+        String str_mm = intent.getStringExtra("mm");
+        if(str_zh!=null){
+            zh.setText(str_zh);
+            mm.setText(str_mm);
+        }
 
         //账号文本框焦点改变事件
         this.zh.setOnFocusChangeListener(new View.OnFocusChangeListener() {
@@ -128,16 +134,17 @@ public class MainActivity extends AppCompatActivity {
             if(mima.equals(mm.getText().toString())){
                 if(checkBox.isChecked()){
                      editor=pf.edit();
-                    if(checkBox.isChecked()){
                         editor.putBoolean("rememberpassword",true);
                         editor.putString("zhanghao",zh.getText().toString());
                         editor.putString("mima",mm.getText().toString());
+                        editor.apply();
 
-                    }
                 }else{
-                    editor.clear();
+                    editor=pf.edit();
+                    editor.putBoolean("rememberpassword",false);
+                    editor.apply();
                 }
-                editor.apply();
+
 
                 Intent intent=new Intent(MainActivity.this,Video.class);
                 intent.putExtra("zhanghao",zh.getText().toString());
@@ -148,4 +155,5 @@ public class MainActivity extends AppCompatActivity {
 
         }
     }
+
 }
