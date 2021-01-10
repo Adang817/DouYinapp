@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="10dp">
+    <LinearLayout
+        android:id="@+id/left_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:orientation="horizontal"
+        >
+        //男头像
+        <ImageView
+            android:id="@+id/boy"
+            android:layout_marginTop="5dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/boy"
+            android:layout_marginRight="10dp"/>
+        //左消息框布局
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:background="@drawable/message_left_original"
+           >
+
+
+            <TextView
+                android:id="@+id/leftMsg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:textSize="20dp"
+                android:textColor="#fff"/>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/right_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:orientation="horizontal">
+
+
+        //右消息框布局
+        <LinearLayout
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:background="@drawable/message_right_original" >
+
+            <TextView
+                android:id="@+id/rightmsg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:textSize="20dp"
+                />
+
+        </LinearLayout>
+        //女头像
+        <ImageView
+            android:id="@+id/gril"
+            android:layout_marginTop="5dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/gril"
+            android:layout_marginLeft="10dp"/>
+
+
+    </LinearLayout>
+
+
+
+</FrameLayout>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="640dp"
+    android:orientation="vertical">
+    <TextView
+        android:id="@+id/add_btn"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="440dp"
+        android:text="name"
+        android:textSize="40dp"
+        android:textColor="@android:color/black"
+        />
+
+    <VideoView
+        android:id="@+id/video"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        />
+    <ImageView
+        android:id="@+id/video_tx"
+        android:layout_marginTop="260dp"
+        android:layout_alignParentRight="true"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/video_tx"/>
+
+    <ImageView
+        android:id="@+id/pl"
+        android:layout_marginTop="350dp"
+        android:layout_alignParentRight="true"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/pl"/>
+
+    <ImageView
+        android:id="@+id/fx"
+        android:layout_marginTop="440dp"
+        android:layout_alignParentRight="true"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/fx"/>
+
+
+<!--    <TextView-->
+<!--        android:layout_marginTop="510dp"-->
+<!--        android:layout_width="100dp"-->
+<!--        android:layout_height="100dp"-->
+<!--        android:text="aaaaaaaaaaaaaaaaaaaaaaaaaa"-->
+<!--        android:textSize="60dp"-->
+<!--        android:background="@android:color/white"/>-->
+
+
+</RelativeLayout>
